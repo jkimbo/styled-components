@@ -114,6 +114,34 @@ Object {
 `);
   });
 
+  it('forwards defaultProps', () => {
+    const Inner = () => null;
+
+    Inner.defaultProps = {
+      theme: {
+        fontSize: 12,
+      },
+      style: {
+        background: 'blue',
+        textAlign: 'center',
+      },
+    };
+
+    const Outer = styled(Inner)``;
+
+    expect(Outer.defaultProps).toMatchInlineSnapshot(`
+Object {
+  "style": Object {
+    "background": "blue",
+    "textAlign": "center",
+  },
+  "theme": Object {
+    "fontSize": 12,
+  },
+}
+`);
+  });
+
   it('should combine inline styles and the style prop', () => {
     const Comp = styled.View`
       padding-top: 10;

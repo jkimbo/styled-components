@@ -326,7 +326,8 @@ export default function createStyledComponent(target: Target, options: Object, r
   // $FlowFixMe
   Object.defineProperty(WrappedStyledComponent, 'defaultProps', {
     get() {
-      return this._foldedDefaultProps;
+      // $FlowFixMe
+      return this._foldedDefaultProps !== undefined ? this._foldedDefaultProps : target.defaultProps;
     },
 
     set(obj) {

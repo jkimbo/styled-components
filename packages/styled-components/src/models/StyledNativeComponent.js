@@ -238,7 +238,8 @@ export default (InlineStyle: Function) => {
     // $FlowFixMe
     Object.defineProperty(WrappedStyledNativeComponent, 'defaultProps', {
       get() {
-        return this._foldedDefaultProps;
+        // $FlowFixMe
+        return this._foldedDefaultProps !== undefined ? this._foldedDefaultProps : target.defaultProps;
       },
 
       set(obj) {
